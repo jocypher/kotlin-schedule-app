@@ -40,7 +40,8 @@ android {
 }
 
 dependencies {
-    val lifecycle_version = "2.8.6"
+
+    val lifecycle_version = "2.8.5"
     val room_version = "2.6.1"
     // adding the dependency for live data and view model this helps to use the room database
     // ViewModel
@@ -53,8 +54,11 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     // adding coroutine dependency , this helps to handle async and background threads
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0-RC.2")
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.2")
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
