@@ -12,6 +12,8 @@
     <string name="save">Save</string>
     <string name="description">description</string>
     <string name="title">title</string>
+    <string name="it_is_a_long_established_fact_that_a_reader_will_be_distracted_by_the_readable_content_of_a_page_when_looking_at_its_layout_the_point_of_using_lorem_ipsum_is_that_it_has_a_more_or_less_normal_distribution_of_letters_as_opposed_to_using_content_here_content_here_making_it_look_like_readable_english">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English</string>
+    <string name="practice_dsa_and_cp">Practice DSA and CP</string>
     <string-array name="priorities">
         <item>High Priority</item>
         <item>Medium Priority</item>

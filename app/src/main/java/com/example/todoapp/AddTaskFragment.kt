@@ -59,7 +59,7 @@ class AddTaskFragment : Fragment() {
                             (view as? TextView)?.setTextColor(
                                 ContextCompat.getColor(
                                     requireContext(),
-                                    R.color.yellow
+                                    R.color.purple_700
                                 )
                             )
                         }
