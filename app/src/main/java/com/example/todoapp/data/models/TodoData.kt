@@ -3,6 +3,7 @@ package com.example.todoapp.data.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "todo_data_table")
 data class TodoData(
@@ -17,4 +18,4 @@ data class TodoData(
     var description: String,
     @ColumnInfo("task_status")
     var isCompleted: Boolean = false
-)
+) : Serializable

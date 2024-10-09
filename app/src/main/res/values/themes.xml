@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TodoApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.TodoApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -25,5 +25,4 @@
         <!--        <item name="cornerFamilyBottomRight">rounded</item>-->
     </style>
 
-    <style name="Theme.TodoApp" parent="Base.Theme.TodoApp" />
 </resources>
