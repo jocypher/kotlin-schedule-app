@@ -43,7 +43,7 @@ interface TodoDao {
     fun sortByLowPriority(): LiveData<List<TodoData>>
 
 
-    @Query("SELECT * FROM todo_data_table WHERE title LIKE :searchQuery ")
+    @Query("SELECT * FROM todo_data_table WHERE title LIKE :searchQuery OR description LIKE :searchQuery ")
     fun searchDatabase(searchQuery: String): LiveData<List<TodoData>>
 
 
