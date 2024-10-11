@@ -14,27 +14,25 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.todoapp.data.TodoDB
 import com.example.todoapp.data.models.Priority
 import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.databinding.FragmentAddTaskBinding
+import com.example.todoapp.domain.SharedViewModel
 import com.example.todoapp.domain.TodoViewModel
-import com.example.todoapp.domain.TodoViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
 class AddTaskFragment : Fragment() {
     private lateinit var taskBinding: FragmentAddTaskBinding
     private lateinit var todoViewModel: TodoViewModel
+    private lateinit var sharedViewModel: SharedViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         taskBinding = FragmentAddTaskBinding.inflate(inflater, container, false)
-
-        val application = requireActivity().application
-        val dao = TodoDB.getInstance(application).todoDao()
-        val factory = TodoViewModelFactory(dao)
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+        val factory = sharedViewModel.factory
         todoViewModel = ViewModelProvider(this, factory)[TodoViewModel::class.java]
 
         taskBinding.spinnerItemsId.onItemSelectedListener =

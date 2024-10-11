@@ -15,11 +15,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.todoapp.data.TodoDB
 import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.databinding.FragmentHomeBinding
+import com.example.todoapp.domain.SharedViewModel
 import com.example.todoapp.domain.TodoViewModel
-import com.example.todoapp.domain.TodoViewModelFactory
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +32,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var todoData: TodoData
     private lateinit var todoViewModel: TodoViewModel
+    private lateinit var sharedViewModel: SharedViewModel
     private var searchJob: Job? = null
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -42,10 +42,9 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     ): View {
         // Inflate the layout for this fragment
         homeBinding = FragmentHomeBinding.inflate(inflater, container, false)
-        val application = requireActivity().application
-        val dao = TodoDB.getInstance(application).todoDao()
-        val factory = TodoViewModelFactory(dao)
-        todoViewModel = ViewModelProvider(this, factory)[TodoViewModel::class.java]
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+        val factory = sharedViewModel.factory
+        val todoViewModel = ViewModelProvider(this, factory)[TodoViewModel::class.java]
         homeBinding.fabId.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_addTaskFragment)
         }
