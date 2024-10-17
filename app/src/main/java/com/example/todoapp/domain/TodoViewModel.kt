@@ -25,5 +25,9 @@ class TodoViewModel(private var dao: TodoDao) : ViewModel() {
 
     fun searchDatabase(searchString: String) = dao.searchDatabase(searchString)
 
+    fun deleteAllTodo() = viewModelScope.launch {
+        dao.deleteAllTodo()
+    }
+
 
 }

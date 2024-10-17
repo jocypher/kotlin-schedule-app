@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.todoapp.data.models.Priority
 import com.example.todoapp.data.models.TodoData
 
-class TodoRecyclerViewAdapter : RecyclerView.Adapter<TodoViewHolder>() {
+class TodoRecyclerViewAdapter(private val clickListener: (TodoData) -> Unit) :
+    RecyclerView.Adapter<TodoViewHolder>() {
     private val todoList = ArrayList<TodoData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -22,7 +23,7 @@ class TodoRecyclerViewAdapter : RecyclerView.Adapter<TodoViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        return holder.bind(todoList[position])
+        return holder.bind(todoList[position], clickListener)
     }
 
     fun setTodo(todo: List<TodoData>) {
@@ -33,7 +34,7 @@ class TodoRecyclerViewAdapter : RecyclerView.Adapter<TodoViewHolder>() {
 
 
 class TodoViewHolder(private val view: View) : ViewHolder(view) {
-    fun bind(data: TodoData) {
+    fun bind(data: TodoData, clickListener: (TodoData) -> Unit) {
         val title = view.findViewById<TextView>(R.id.tvTitle)
         val desc = view.findViewById<TextView>(R.id.tvDescription)
         val priority = view.findViewById<View>(R.id.priority_indicator)
@@ -47,7 +48,9 @@ class TodoViewHolder(private val view: View) : ViewHolder(view) {
         }
 
         priority.setBackgroundColor(priorityColor)
-
+        view.setOnClickListener {
+            clickListener(data)
+        }
     }
 
 

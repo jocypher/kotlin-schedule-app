@@ -24,7 +24,7 @@ interface TodoDao {
     suspend fun deleteTodo(todoData: TodoData)
 
     @Query("DELETE FROM todo_data_table")
-    fun deleteAllTodo()
+    suspend fun deleteAllTodo()
 
     @Query(
         "SELECT * FROM todo_data_table ORDER BY CASE " +
